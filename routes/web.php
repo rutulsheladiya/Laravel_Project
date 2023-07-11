@@ -20,17 +20,20 @@ Route::get('/', function () {
 });
 
 // Register Route
-Route::view('register','admin/register');
-Route::post('sendregisterdata',[UserController::class,'registerUser']);
+Route::view('register', 'admin/register');
+Route::post('sendregisterdata', [UserController::class, 'registerUser']);
 
 // Login Route
-Route::view('login','admin/login');
+Route::view('login', 'admin/login')->name('login');
+Route::post('sendlogindata', [UserController::class, 'loginUser']);
 
-// Dashboard route
-Route::view('dashboard','admin/dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    // Dashboard route
+    Route::view('dashboard', 'admin/dashboard')->middleware('auth');
 
-//all userdetails route
-Route::view('userdetails','admin/userdetails');
+    //all userdetails route
+    Route::view('userdetails', 'admin/userdetails');
 
-// add userdetails route
-Route::view('manage_userdetail','admin/manage_userdetail');
+    // add userdetails route
+    Route::view('manage_userdetail', 'admin/manage_userdetail');
+});

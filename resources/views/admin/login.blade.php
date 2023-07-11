@@ -35,32 +35,37 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="{{ url('/sendlogindata') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <input class="au-input au-input--full" type="email" name="email"
                                         placeholder="Email">
                                 </div>
+                                <span class="error-msg">
+                                    @error('email')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password"
                                         placeholder="Password">
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign
-                                    in</button>
+                                <span class="error-msg">
+                                    @error('password')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Login</button>
 
-                                {{-- <div class="alert alert-danger" role="alert">
-                                    {{session('error')}}
-                                </div> --}}
-                                {{--
-                                @if (session()->has('error'))
-                                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                                    {{session('error')}}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
+                                {{-- @if (session()->has('error'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>{{ session('message') }}</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
                                 @endif --}}
                             </form>
                         </div>

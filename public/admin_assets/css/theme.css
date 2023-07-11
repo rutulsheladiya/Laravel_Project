@@ -74,7 +74,15 @@ Notes:	decreasing heading by 0.4em with every subsequent heading level
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+.error-msg {
+    color: red;
+    margin-bottom: 10px !important;
+    font-size: 15px;
+}
 
+.form-group {
+    margin-bottom: 10px !important;
+}
 ul {
     margin: 0;
 }

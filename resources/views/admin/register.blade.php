@@ -20,17 +20,6 @@
 
     <!-- Main CSS-->
     <link href="{{ asset('admin_assets/css/theme.css') }}" rel="stylesheet" media="all">
-    <style>
-        .error-msg {
-            color: red;
-            margin-bottom: 10px !important;
-            font-size: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 10px !important;
-        }
-    </style>
 </head>
 
 <body class="animsition">
@@ -109,14 +98,13 @@
                                 <button class="au-btn au-btn--block au-btn--green m-b-20"
                                     type="submit">Register</button>
 
-                                @if (session()->has('message'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <strong>{{ session('message') }}</strong>
+                                @if (session()->has('noAccess'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>{{ session('noAccess') }}</strong>
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-
                                 @endif
                             </form>
                         </div>
