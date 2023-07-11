@@ -59,14 +59,14 @@
                                 </span>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Login</button>
 
-                                {{-- @if (session()->has('error'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <strong>{{ session('message') }}</strong>
+                                @if(session()->has('InvalidUser'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>{{ session('InvalidUser') }}</strong>
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                @endif --}}
+                                @endif
                             </form>
                         </div>
                     </div>

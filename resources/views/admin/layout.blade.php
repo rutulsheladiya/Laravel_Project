@@ -105,7 +105,11 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">Welcome Admin</a>
+                                            <a class="js-acc-btn" href="#">Welcome 
+                                                @if (session()->has('username'))
+                                                    {{ session('username') }}
+                                                @endif
+                                            </a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="account-dropdown__body">

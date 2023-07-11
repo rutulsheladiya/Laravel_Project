@@ -2,6 +2,13 @@
 
 @section('dashboard_select', 'active');
 @section('mainContent')
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Welcome 
+            @if (session()->has('username'))
+                {{ session('username') }}
+            @endif
+        </h4>
+    </div>
     <div class="row">
         <h1>Dashboard</h1>
     </div>

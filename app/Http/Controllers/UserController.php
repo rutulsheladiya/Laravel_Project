@@ -40,6 +40,9 @@ class UserController extends Controller
             "password" => $request->password
         ];
         if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            $user = Auth::user();
+            session(['username'=>$user->name]);
             return redirect('dashboard');
         } else {
             return back()->withErrors([
