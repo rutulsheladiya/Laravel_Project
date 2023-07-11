@@ -20,7 +20,17 @@
 
     <!-- Main CSS-->
     <link href="{{ asset('admin_assets/css/theme.css') }}" rel="stylesheet" media="all">
+    <style>
+        .error-msg {
+            color: red;
+            margin-bottom: 10px !important;
+            font-size: 15px;
+        }
 
+        .form-group {
+            margin-bottom: 10px !important;
+        }
+    </style>
 </head>
 
 <body class="animsition">
@@ -36,30 +46,78 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="{{ url('/sendregisterdata') }}" method="POST" autocomplete="on">
                                 @csrf
-                                <div class="form-group">
+                                <div class="form-group mt-2">
                                     <label>Enter Name</label>
-                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Enter Username">
+                                    <input class="au-input au-input--full" type="text" name="username" id=""
+                                        placeholder="Enter Username" value="{{ old('username') }}">
                                 </div>
-                                <div class="form-group">
+                                <span class="error-msg">
+                                    @error('username')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                                <div class="form-group mt-2">
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Enter Email Address">
+                                    <input class="au-input au-input--full" type="email" name="email" id=""
+                                        placeholder="Enter Email Address" value="{{ old('email') }}">
                                 </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Enter Password">
-                                </div>
-                                <div class="form-group">
-                                    <label>Confirm Password</label>
-                                    <input class="au-input au-input--full" type="password" name="cpassword" placeholder="Enter Confirm Password">
-                                </div>
-                                <div class="form-group">
-                                    <label>Mobile Number</label>
-                                    <input class="au-input au-input--full" type="number" name="mobilenumber" placeholder="Enter Mobile Number">
-                                </div>
+                                <span class="error-msg">
+                                    @error('email')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
 
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Register</button>
+
+                                <div class="form-group mt-2">
+                                    <label>Password</label>
+                                    <input class="au-input au-input--full" type="password" name="password"
+                                        id="" placeholder="Enter Password" value="{{ old('password') }}">
+                                </div>
+                                <span class="error-msg">
+                                    @error('password')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+
+                                <div class="form-group mt-2">
+                                    <label>Confirm Password</label>
+                                    <input class="au-input au-input--full" type="password" name="cpassword"
+                                        id="" placeholder="Enter Confirm Password"
+                                        value="{{ old('cpassword') }}">
+                                </div>
+                                <span class="error-msg">
+                                    @error('cpassword')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+
+                                <div class="form-group mt-2">
+                                    <label>Mobile Number</label>
+                                    <input class="au-input au-input--full" type="number" name="mobilenumber"
+                                        id="" placeholder="Enter Mobile Number"
+                                        value="{{ old('mobilenumber') }}">
+                                </div>
+                                <span class="error-msg">
+                                    @error('mobilenumber')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+
+
+                                <button class="au-btn au-btn--block au-btn--green m-b-20"
+                                    type="submit">Register</button>
+
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>{{ session('message') }}</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                @endif
                             </form>
                         </div>
                     </div>

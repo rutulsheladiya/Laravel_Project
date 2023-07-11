@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ Route::get('/', function () {
 
 // Register Route
 Route::view('register','admin/register');
-
+Route::post('sendregisterdata',[UserController::class,'registerUser']);
 
 // Login Route
 Route::view('login','admin/login');
