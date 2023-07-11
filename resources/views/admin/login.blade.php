@@ -57,11 +57,24 @@
                                         {{ $message }}
                                     @enderror
                                 </span>
+
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="remember_me">
+                                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                                </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Login</button>
 
-                                @if(session()->has('InvalidUser'))
+                                @if (session()->has('InvalidUser'))
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                         <strong>{{ session('InvalidUser') }}</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+                                @if (session()->has('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>{{ session('success') }}</strong>
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

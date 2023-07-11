@@ -36,4 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // add userdetails route
     Route::view('manage_userdetail', 'admin/manage_userdetail');
+
+    // logout
+    Route::get('logout', [UserController::class, 'logout']);
 });

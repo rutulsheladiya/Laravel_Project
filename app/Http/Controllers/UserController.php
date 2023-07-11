@@ -39,7 +39,9 @@ class UserController extends Controller
             "email" => $request->email,
             "password" => $request->password
         ];
-        if (Auth::attempt($credentials)) {
+        $remember_me = $request->has('remember_me') ? true : false; 
+
+        if (Auth::attempt($credentials,$remember_me)) {
             $request->session()->regenerate();
             $user = Auth::user();
             session(['username'=>$user->name]);
@@ -49,5 +51,13 @@ class UserController extends Controller
                 'email' => 'Invalid Credentials',
             ]);
         }
+    }
+
+    function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        session()->flash('success','You Have Been Logout.');
+        return redirect('login');
     }
 }
