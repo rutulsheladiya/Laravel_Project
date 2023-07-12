@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +26,16 @@ Route::view('register', 'admin/register');
 Route::post('sendregisterdata', [UserController::class, 'registerUser']);
 
 // Login Route
-Route::view('login', 'admin/login')->name('login');
+Route::get('login', function () {
+    return view('admin/login');
+})->name('login');
 Route::post('sendlogindata', [UserController::class, 'loginUser']);
 
-Route::group(['middleware' => 'auth'], function () {
+
+
+Route::middleware(['auth','verified'])->group(function () {
     // Dashboard route
-    Route::view('dashboard', 'admin/dashboard')->middleware('auth');
+    Route::view('dashboard', 'admin/dashboard');
 
     //all userdetails route
     Route::view('userdetails', 'admin/userdetails');
@@ -40,3 +46,12 @@ Route::group(['middleware' => 'auth'], function () {
     // logout
     Route::get('logout', [UserController::class, 'logout']);
 });
+
+Route::get('/email/verify', function () {
+    return view('admin.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('login');
+})->middleware(['auth', 'signed'])->name('verification.verify');

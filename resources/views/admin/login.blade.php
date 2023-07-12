@@ -81,6 +81,7 @@
                                     </div>
                                 @endif
                             </form>
+                            <p>click here to <a href="{{url('/register')}}">Register</a></p>
                         </div>
                     </div>
                 </div>

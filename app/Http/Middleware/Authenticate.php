@@ -11,8 +11,8 @@ class Authenticate extends Middleware
      * Get the path the user should be redirected to when they are not authenticated.
      */
     protected function redirectTo(Request $request): ?string
-    { 
-        session()->flash('InvalidUser','Access Denied');
-        return route('login');
+    {
+        session()->flash('InvalidUser','Access Denied.');
+        return $request->expectsJson() ? null : route('login');
     }
 }

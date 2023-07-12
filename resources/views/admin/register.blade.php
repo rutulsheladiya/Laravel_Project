@@ -98,15 +98,16 @@
                                 <button class="au-btn au-btn--block au-btn--green m-b-20"
                                     type="submit">Register</button>
 
-                                @if (session()->has('noAccess'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <strong>{{ session('noAccess') }}</strong>
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>{{ session('message') }}</strong>
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                 @endif
                             </form>
+                            <p>click here to <a href="{{url('/login')}}">login</a></p>
                         </div>
                     </div>
                 </div>

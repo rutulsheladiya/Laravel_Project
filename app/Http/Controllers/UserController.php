@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+
 
 class UserController extends Controller
 {
@@ -25,13 +27,14 @@ class UserController extends Controller
         $userData->password = Hash::make($request->password);
         $userData->mobilenumber =  $request->mobilenumber;
         $userData->save();
+        event(new Registered($userData));
         session()->flash('message', 'Registration Completed Successfully...');
         return redirect('register');
     }
     function loginUser(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'email' => 'email|required',
             'password' => 'required',
 
         ]);
@@ -39,12 +42,12 @@ class UserController extends Controller
             "email" => $request->email,
             "password" => $request->password
         ];
-        $remember_me = $request->has('remember_me') ? true : false; 
+        // $remember_me = $request->has('remember_me') ? true : false;
 
-        if (Auth::attempt($credentials,$remember_me)) {
-            $request->session()->regenerate();
+        if (Auth::attempt($credentials)) {
+           // $request->session()->regenerate();
             $user = Auth::user();
-            session(['username'=>$user->name]);
+            session(['username' => $user->name]);
             return redirect('dashboard');
         } else {
             return back()->withErrors([
@@ -53,11 +56,12 @@ class UserController extends Controller
         }
     }
 
-    function logout(Request $request){
+    function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        session()->flash('success','You Have Been Logout.');
+        session()->flash('success', 'You Have Been Logout.');
         return redirect('login');
     }
 }

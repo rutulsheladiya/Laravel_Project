@@ -3,7 +3,7 @@
 @section('dashboard_select', 'active');
 @section('mainContent')
     <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">Welcome 
+        <h4 class="alert-heading">Welcome
             @if (session()->has('username'))
                 {{ session('username') }}
             @endif
@@ -11,6 +11,8 @@
     </div>
     <div class="row">
         <h1>Dashboard</h1>
+        {{-- {{Auth::id()}} --}}
+        {{-- {{Auth::user()}} --}}
     </div>
     <section class="statistic statistic2">
         <div class="container">
