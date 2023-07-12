@@ -27,9 +27,20 @@
     <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
             <div class="col-md-8">
-                <img src="{{asset('admin_assets/images/Mar-Business_18.jpg')}}" alt="" class="img-fluid">
+                <img src="{{ asset('admin_assets/images/Mar-Business_18.jpg') }}" alt="" class="img-fluid">
                 <h2 style="color: #2e4471" class="text-center">Please Verify Your Email</h2>
-                <h3 class="text-center mt-3" style="color: #2e4471">Go back to <a href="{{url('/login')}}">Login Page</a></h3>
+                <h3 class="text-center mt-3" style="color: #2e4471">Go back to <a href="{{ url('/login') }}">Login
+                        Page</a></h3>
+
+                <div class="text-center mt-5">
+                    <form action="{{ url('/email/verification-notification') }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Resend Email</button>
+                    </form>
+                    @if (session()->has('message'))
+                       <h3 style="color: #2e4471" class="mt-2">{{ session('message') }}</h3>
+                    @endif
+                </div>
             </div>
         </div>
     </div>

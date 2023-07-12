@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+
 
 
 /*
@@ -33,7 +35,7 @@ Route::post('sendlogindata', [UserController::class, 'loginUser']);
 
 
 
-Route::middleware(['auth','verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard route
     Route::view('dashboard', 'admin/dashboard');
 
@@ -55,3 +57,9 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
     return redirect('login');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification Link Resended..');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
