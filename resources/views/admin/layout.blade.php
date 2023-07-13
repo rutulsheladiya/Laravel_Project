@@ -52,12 +52,13 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
                         </li>
-
+                        @can('isAdmin')
                         <li class="@yield('category_select')">
                             <a href="{{ url('admin/category') }}">
-                                <i class="fas fa-shopping-basket"></i>Category
+                                <i class="fas fa-shopping-basket"></i>User
                             </a>
                         </li>
+                        @endcan
                     </ul>
                 </div>
             </nav>
@@ -79,12 +80,20 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
                         </li>
-
                         <li class="@yield('category_select')">
                             <a href="{{ url('userdetails') }}">
                                 <i class="fas fa-list"></i>User
                             </a>
                         </li>
+
+                        {{-- apply gate on User page (direct apply on blade file using @can())  --}}
+                        {{-- @can('isAdmin')
+                        <li class="@yield('category_select')">
+                            <a href="{{ url('userdetails') }}">
+                                <i class="fas fa-list"></i>User
+                            </a>
+                        </li>
+                        @endcan --}}
                     </ul>
                 </nav>
             </div>
@@ -105,7 +114,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">Welcome 
+                                            <a class="js-acc-btn" href="#">Welcome
                                                 @if (session()->has('username'))
                                                     {{ session('username') }}
                                                 @endif

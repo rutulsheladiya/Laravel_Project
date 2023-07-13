@@ -41,9 +41,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //all userdetails route
     Route::view('userdetails', 'admin/userdetails');
+    // ->middleware(['can:isAdmin']);
 
     // add userdetails route
     Route::view('manage_userdetail', 'admin/manage_userdetail');
+    // ->middleware(['can:isAdmin']);
 
     // logout
     Route::get('logout', [UserController::class, 'logout']);

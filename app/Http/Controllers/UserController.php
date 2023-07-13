@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -45,7 +46,7 @@ class UserController extends Controller
         // $remember_me = $request->has('remember_me') ? true : false;
 
         if (Auth::attempt($credentials)) {
-           // $request->session()->regenerate();
+            // $request->session()->regenerate();
             $user = Auth::user();
             session(['username' => $user->name]);
             return redirect('dashboard');
