@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login</title>
+    <title>Forgot Password</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('admin_assets/css/font-face.css') }}" rel="stylesheet" media="all">
@@ -28,6 +28,8 @@
         <div class="page-content--bge5">
             <div class="container">
                 <div class="login-wrap">
+                    <h4 class="mb-5 text-center" style="color: #2e4471">Please Enter Your Email Address For Generate New
+                        Password</h4>
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
@@ -35,8 +37,9 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="{{ url('/sendlogindata') }}" method="POST">
+                            <form action="{{ url('/forgot-password') }}" method="POST">
                                 @csrf
+
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <input class="au-input au-input--full" type="email" name="email"
@@ -47,44 +50,10 @@
                                         {{ $message }}
                                     @enderror
                                 </span>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password"
-                                        placeholder="Password">
-                                </div>
-                                <span class="error-msg">
-                                    @error('password')
-                                        {{ $message }}
-                                    @enderror
-                                </span>
 
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="remember_me">
-                                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Login</button>
-
-                                @if (session()->has('InvalidUser'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <strong>{{ session('InvalidUser') }}</strong>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                @endif
-                                @if (session()->has('success'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <strong>{{ session('success') }}</strong>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                @endif
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Submit</button>
                             </form>
-                            <div class="d-flex justify-content-between">
-                                <p>click here to <a href="{{ url('/register') }}">Register</a></p>
-                                <p><a href="{{ url('/forgot-password') }}">Forgot Password ?</a></p>
-                            </div>
+                            <p>Click Here to <a href="{{ url('/login') }}"> Login</a></p>
                             @if (session()->has('status'))
                                 <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
                                     <strong>{{ session('status') }}</strong>
