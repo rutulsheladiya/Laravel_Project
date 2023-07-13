@@ -18,10 +18,7 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Mobile No</th>
-                            @can('isAdmin')
                             <th>Action</th>
-                            @endcan
-
                         </tr>
                     </thead>
                     <tbody>
@@ -29,12 +26,10 @@
                             <td>1</td>
                             <td>Rutul</td>
                             <td>8320893080</td>
-                            @can('isAdmin')
                             <td colspan="2">
                                 <a href="{{url('/update')}}"><button class="btn btn-info">Edit</button></a>
                                 <button class="btn btn-danger">Delete</button>
                             </td>
-                            @endcan
                         </tr>
                     </tbody>
                 </table>

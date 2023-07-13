@@ -41,7 +41,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //all userdetails route
     Route::view('userdetails', 'admin/userdetails');
-    // ->middleware(['can:isAdmin']);
+    // ->middleware(['can:isAdmin, App\Models\User']); - policy
+    // ->middleware(['can:isAdmin']);  - Gate
 
     // add userdetails route
     Route::view('manage_userdetail', 'admin/manage_userdetail');

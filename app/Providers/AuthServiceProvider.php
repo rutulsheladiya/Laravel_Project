@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+      'App\Models\User' => 'App\Policies\UserPolicy'
     ];
 
     /**
@@ -22,12 +22,13 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-       Gate::define('isAdmin',function($user){
-         if($user->email === 'rutulsheladiya2731@gmail.com'){
-            return true;
-         }else{
-            return false;
-         }
-       });
+        // using gate
+        //    Gate::define('isAdmin',function($user){
+        //      if($user->email === 'rutulsheladiya2731@gmail.com'){
+        //         return true;
+        //      }else{
+        //         return false;
+        //      }
+        //    });
     }
 }
