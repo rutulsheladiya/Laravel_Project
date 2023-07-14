@@ -19,6 +19,11 @@ class EmployeeController extends Controller
         $employee->skill = $skills;
         $employee->city = $request->city;
         $employee->save();
-        return redirect('manage_userdetail')->with('status',"Your Data Inserted Successfully..");
+        return redirect('userdetails')->with('status',"Your Data Inserted Successfully..");
+    }
+
+    public function index(){
+       $employeeData = Employee::all();
+       return view('admin.userdetails',['empData'=>$employeeData]);
     }
 }

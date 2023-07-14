@@ -46,7 +46,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'admin/dashboard');
 
     //all userdetails route
-    Route::view('userdetails', 'admin/userdetails');
+    // Route::view('userdetails','admin.userdetails');
+    Route::get('userdetails', [EmployeeController::class, 'index']);
     // ->middleware(['can:isAdmin, App\Models\User']); - policy
     // ->middleware(['can:isAdmin']);  - Gate
 
