@@ -1,5 +1,5 @@
 @extends('admin/layout')
-@section('page_title', 'Category');
+@section('page_title', 'Users');
 @section('category_select', 'active');
 
 @section('mainContent')

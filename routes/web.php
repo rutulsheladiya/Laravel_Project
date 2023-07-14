@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\UserController;
+use App\Models\Employee;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -10,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Auth\Events\PasswordReset;
+use App\Http\Controllers\EmployeeController;
 
 
 /*
@@ -50,6 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // add userdetails route
     Route::view('manage_userdetail', 'admin/manage_userdetail');
+    Route::post('sendmanageuserdetail', [EmployeeController::class, 'store']);
     // ->middleware(['can:isAdmin']);
 
     // logout
