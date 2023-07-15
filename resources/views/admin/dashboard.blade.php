@@ -20,14 +20,14 @@
             <div class="row">
                 <div class="col-md-6 col-lg-3">
                     <div class="statistic__item statistic__item--green">
-                        <span class="desc">Categories</span>
-                        <h2 class="number">1</h2>
+                        <span class="desc">Total Employees</span>
+                        <h2 class="number">{{$totalEmployee}}</h2>
                         <div class="icon">
                             <i class="fas fa-list"></i>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
+                {{-- <div class="col-md-6 col-lg-3">
                     <div class="statistic__item statistic__item--orange">
                         <span class="desc">Brands</span>
                         <h2 class="number">1</h2>
@@ -53,7 +53,7 @@
                             <i class="fa fa-inr" aria-hidden="true"></i>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

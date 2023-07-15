@@ -43,7 +43,7 @@ Route::post('sendlogindata', [UserController::class, 'loginUser']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard route
-    Route::view('dashboard', 'admin/dashboard');
+    Route::get('dashboard', [EmployeeController::class,'admin']);
 
     //all userdetails route
     // Route::view('userdetails','admin.userdetails');

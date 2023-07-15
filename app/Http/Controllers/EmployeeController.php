@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use PhpParser\Node\Expr\Empty_;
 
 class EmployeeController extends Controller
 {
@@ -60,5 +61,10 @@ class EmployeeController extends Controller
        $employee->delete();
        session()->flash('message',"Record Has Been Deleted..");
        return redirect('userdetails');
+    }
+
+    public function admin(){
+       $totalEmployee = Employee::all()->count();
+       return view('admin.dashboard',['totalEmployee'=>$totalEmployee]);
     }
 }
