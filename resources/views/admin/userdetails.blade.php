@@ -48,8 +48,8 @@
                                 <td>{{ $data['updated_at'] }}</td>
                                 <td>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <a href="{{ url('/update') }}"><button class="btn btn-info">Edit</button></a>
-                                        <button class="btn btn-danger mx-3">Delete</button>
+                                        <a href="{{url('/viewpersonaldetail/'.$data['id'])}}"><button class="btn btn-secondary">View</button></a>
+                                        <a href="{{ url('/update') }}"><button class="btn btn-info mx-3">Edit</button></a>
                                         <button class="btn btn-danger">Delete</button>
                                     </div>
                                 </td>

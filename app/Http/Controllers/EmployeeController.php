@@ -26,4 +26,10 @@ class EmployeeController extends Controller
        $employeeData = Employee::all();
        return view('admin.userdetails',['empData'=>$employeeData]);
     }
+
+    public function viewPersonalDetail($empId){
+       $personalDetail = Employee::find($empId);
+    //    dd($personalDetail->toArray());
+    return view('admin.viewpersonaldetail',['personaldata'=>$personalDetail]);
+    }
 }

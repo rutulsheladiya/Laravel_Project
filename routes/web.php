@@ -56,6 +56,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('sendmanageuserdetail', [EmployeeController::class, 'store']);
     // ->middleware(['can:isAdmin']);
 
+    // Route for view personal details
+    Route::get('viewpersonaldetail/{empId}',[EmployeeController::class,'viewPersonalDetail']);
+
     // logout
     Route::get('logout', [UserController::class, 'logout']);
 });
