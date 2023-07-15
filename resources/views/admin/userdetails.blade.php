@@ -26,12 +26,14 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Mobile No</th>
-                            {{-- <th>Gender</th> --}}
+                            <th>Gender</th>
                             <th>Skill</th>
-                            {{-- <th>City</th>
+                            <th>City</th>
                             <th>Created At</th>
-                            <th>Update At</th> --}}
+                            <th>Update At</th>
+                            @can('isAdmin')
                             <th>Action</th>
+                            @endcan
                         </tr>
                     </thead>
                     <tbody>
@@ -41,11 +43,12 @@
                                 <td>{{ $data['name'] }}</td>
                                 <td>{{ $data['email'] }}</td>
                                 <td>{{ $data['mobileno'] }}</td>
-                                {{-- <td>{{ $data['gender'] }}</td> --}}
+                                <td>{{ $data['gender'] }}</td>
                                 <td>{{ $data['skill'] }}</td>
-                                {{-- <td>{{ $data['city'] }}</td>
+                                <td>{{ $data['city'] }}</td>
                                 <td>{{ $data['created_at'] }}</td>
-                                <td>{{ $data['updated_at'] }}</td> --}}
+                                <td>{{ $data['updated_at'] }}</td>
+                                @can('isAdmin')
                                 <td>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <a href="{{url('/viewpersonaldetail/'.$data['id'])}}"><button class="btn btn-secondary">View</button></a>
@@ -53,6 +56,7 @@
                                        <a href="{{url('/delete/'.$data['id'])}}"><button class="btn btn-danger">Delete</button></a> 
                                     </div>
                                 </td>
+                                @endcan
                             </tr>
                         @endforeach
                     </tbody>

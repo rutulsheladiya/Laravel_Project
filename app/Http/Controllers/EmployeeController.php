@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use PhpParser\Node\Expr\Empty_;
+use Illuminate\Support\Facades\Gate;
 
 class EmployeeController extends Controller
 {
@@ -31,19 +32,26 @@ class EmployeeController extends Controller
 
     public function viewPersonalDetail($empId){
        $personalDetail = Employee::find($empId);
-    //    dd($personalDetail->toArray());
+      if(Gate::denies('isAdmin',$personalDetail)){
+         abort(403,"you can not access this page");
+      }
     return view('admin.viewpersonaldetail',['personaldata'=>$personalDetail]);
     }
 
     public function edit($empId){
         $employeeData = Employee::find($empId);
-        // dd($employeeData['skill']);
+       if(Gate::denies('isAdmin',$employeeData)){
+         abort(403,"you can not access this page");
+       }
         $empSkill = explode(",",$employeeData['skill']);
         return view('admin/editemployee',['empdata'=>$employeeData,'empSkill'=>$empSkill]);
     }
 
     public function update(Request $request){
         $employee =  Employee::where("id",$request->empId)->first();
+        if(Gate::denies('isAdmin',$employee)){
+         abort(403,"you can not access this page");
+       }
         $employee->name = $request->username;
         $employee->email = $request->email;
         $employee->mobileno = $request->mobileno;
@@ -58,6 +66,9 @@ class EmployeeController extends Controller
 
     public function delete($empId){
        $employee = Employee::find($empId);
+       if(Gate::denies('isAdmin',$employee)){
+         abort(403,"you can not access this page");
+       }
        $employee->delete();
        session()->flash('message',"Record Has Been Deleted..");
        return redirect('userdetails');

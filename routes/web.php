@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\EmployeeController;
-
+use Illuminate\Auth\Access\Gate;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // ->middleware(['can:isAdmin']);  - Gate
 
     // add userdetails route
-    Route::view('manage_userdetail', 'admin/manage_userdetail');
+    Route::view('manage_userdetail', 'admin/manage_userdetail')->middleware(['can:isAdmin']);
     Route::post('sendmanageuserdetail', [EmployeeController::class, 'store']);
     // ->middleware(['can:isAdmin']);
 

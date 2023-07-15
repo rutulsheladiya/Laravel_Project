@@ -23,12 +23,12 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // using gate
-        //    Gate::define('isAdmin',function($user){
-        //      if($user->email === 'rutulsheladiya2731@gmail.com'){
-        //         return true;
-        //      }else{
-        //         return false;
-        //      }
-        //    });
+           Gate::define('isAdmin',function($user){
+             if($user->email === 'rutulsheladiya2731@gmail.com'){
+                return true;
+             }else{
+                return false;
+             }
+           });
     }
 }
