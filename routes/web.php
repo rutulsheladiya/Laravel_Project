@@ -65,6 +65,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // update data
     Route::post('updateemployeedata',[EmployeeController::class,'update']);
 
+    //Route for Delete Data
+    Route::get('delete/{empId}',[EmployeeController::class,'delete']);
+
     // logout
     Route::get('logout', [UserController::class, 'logout']);
 });

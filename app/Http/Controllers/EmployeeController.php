@@ -19,7 +19,8 @@ class EmployeeController extends Controller
         $employee->skill = $skills;
         $employee->city = $request->city;
         $employee->save();
-        return redirect('userdetails')->with('status',"Your Data Inserted Successfully..");
+        session()->flash('message',"Your Data Inserted Successfully..");
+        return redirect('userdetails');
     }
 
     public function index(){
@@ -50,6 +51,14 @@ class EmployeeController extends Controller
         $employee->skill = $skills;
         $employee->city = $request->city;
         $employee->save();
-       return redirect('userdetails')->with('status',"Your Data Has Been Updated.");
+       session()->flash('message',"Your Data Has Been Updated.");
+       return redirect('userdetails');
+    }
+
+    public function delete($empId){
+       $employee = Employee::find($empId);
+       $employee->delete();
+       session()->flash('message',"Record Has Been Deleted..");
+       return redirect('userdetails');
     }
 }

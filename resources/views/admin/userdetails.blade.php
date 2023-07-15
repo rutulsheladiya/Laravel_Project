@@ -7,9 +7,9 @@
     <a href="{{ url('manage_userdetail') }}">
         <button type="button" class="btn btn-success">Add Details</button>
     </a>
-    @if (session('status'))
+    @if (session('message'))
         <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-            <strong>{{ session('status') }}</strong>
+            <strong>{{ session('message') }}</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -50,7 +50,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <a href="{{url('/viewpersonaldetail/'.$data['id'])}}"><button class="btn btn-secondary">View</button></a>
                                         <a href="{{ url('/editemployee/'.$data['id']) }}"><button class="btn btn-info mx-3">Edit</button></a>
-                                        <button class="btn btn-danger">Delete</button>
+                                       <a href="{{url('/delete/'.$data['id'])}}"><button class="btn btn-danger">Delete</button></a> 
                                     </div>
                                 </td>
                             </tr>

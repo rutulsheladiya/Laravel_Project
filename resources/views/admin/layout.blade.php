@@ -22,6 +22,7 @@
 
     <!-- Main CSS-->
     <link href="{{ asset('admin_assets/css/theme.css') }}" rel="stylesheet" media="all">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.18/dist/sweetalert2.min.css" rel="stylesheet">
 
 </head>
 
@@ -53,11 +54,11 @@
                             </a>
                         </li>
                         @can('isAdmin')
-                        <li class="@yield('category_select')">
-                            <a href="{{ url('admin/category') }}">
-                                <i class="fas fa-shopping-basket"></i>User
-                            </a>
-                        </li>
+                            <li class="@yield('category_select')">
+                                <a href="{{ url('admin/category') }}">
+                                    <i class="fas fa-shopping-basket"></i>User
+                                </a>
+                            </li>
                         @endcan
                     </ul>
                 </div>
@@ -165,7 +166,7 @@
     <script src="{{ asset('admin_assets/vendor/wow/wow.min.js') }}"></script>
     <!-- Main JS-->
     <script src="{{ asset('admin_assets/js/main.js') }}"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>
