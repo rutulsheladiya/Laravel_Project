@@ -26,11 +26,11 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Mobile No</th>
-                            <th>Gender</th>
+                            {{-- <th>Gender</th> --}}
                             <th>Skill</th>
-                            <th>City</th>
+                            {{-- <th>City</th>
                             <th>Created At</th>
-                            <th>Update At</th>
+                            <th>Update At</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -41,15 +41,15 @@
                                 <td>{{ $data['name'] }}</td>
                                 <td>{{ $data['email'] }}</td>
                                 <td>{{ $data['mobileno'] }}</td>
-                                <td>{{ $data['gender'] }}</td>
+                                {{-- <td>{{ $data['gender'] }}</td> --}}
                                 <td>{{ $data['skill'] }}</td>
-                                <td>{{ $data['city'] }}</td>
+                                {{-- <td>{{ $data['city'] }}</td>
                                 <td>{{ $data['created_at'] }}</td>
-                                <td>{{ $data['updated_at'] }}</td>
+                                <td>{{ $data['updated_at'] }}</td> --}}
                                 <td>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <a href="{{url('/viewpersonaldetail/'.$data['id'])}}"><button class="btn btn-secondary">View</button></a>
-                                        <a href="{{ url('/update') }}"><button class="btn btn-info mx-3">Edit</button></a>
+                                        <a href="{{ url('/editemployee/'.$data['id']) }}"><button class="btn btn-info mx-3">Edit</button></a>
                                         <button class="btn btn-danger">Delete</button>
                                     </div>
                                 </td>

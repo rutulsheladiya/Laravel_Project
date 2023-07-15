@@ -32,4 +32,24 @@ class EmployeeController extends Controller
     //    dd($personalDetail->toArray());
     return view('admin.viewpersonaldetail',['personaldata'=>$personalDetail]);
     }
+
+    public function edit($empId){
+        $employeeData = Employee::find($empId);
+        // dd($employeeData['skill']);
+        $empSkill = explode(",",$employeeData['skill']);
+        return view('admin/editemployee',['empdata'=>$employeeData,'empSkill'=>$empSkill]);
+    }
+
+    public function update(Request $request){
+        $employee =  Employee::where("id",$request->empId)->first();
+        $employee->name = $request->username;
+        $employee->email = $request->email;
+        $employee->mobileno = $request->mobileno;
+        $employee->gender = $request->gender;
+        $skills = implode(",",$request->skill);
+        $employee->skill = $skills;
+        $employee->city = $request->city;
+        $employee->save();
+       return redirect('userdetails')->with('status',"Your Data Has Been Updated.");
+    }
 }

@@ -2,7 +2,7 @@
 @section('page_title', 'PersonalDetail');
 @section('personal_select', 'active');
 @section('mainContent')
-    <h1 class="mb10">Add All Details</h1>
+    <h1 class="mb10">Personal Detail</h1>
     <a href="{{ url('userdetails') }}">
         <button type="button" class="btn btn-success">
             Back

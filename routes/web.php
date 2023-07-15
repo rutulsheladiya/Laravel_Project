@@ -59,6 +59,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Route for view personal details
     Route::get('viewpersonaldetail/{empId}',[EmployeeController::class,'viewPersonalDetail']);
 
+    // edit form route
+    Route::get('editemployee/{empId}',[EmployeeController::class,'edit']);
+
+    // update data
+    Route::post('updateemployeedata',[EmployeeController::class,'update']);
+
     // logout
     Route::get('logout', [UserController::class, 'logout']);
 });
