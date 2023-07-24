@@ -50,6 +50,10 @@
                                     aria-required="true" aria-invalid="false" value="{{ $personaldata['city'] }}" readonly>
                             </div>
                             <div class="form-group">
+                                <label for="username" class="control-label my-2">Image</label> <br>
+                                <img src="{{asset('storage/Media/'.$personaldata['Image'])}}" class="img-fluid rounded-top" alt="" height="200px" width="200px">
+                            </div>
+                            <div class="form-group">
                                 <label for="username" class="control-label mb-1">Created At</label>
                                 <input id="username" name="username" type="text" class="form-control"
                                     aria-required="true" aria-invalid="false" value="{{ $personaldata['created_at'] }}" readonly>
@@ -65,5 +69,5 @@
             </div>
         </div>
     </div>
-    
+
 @endsection

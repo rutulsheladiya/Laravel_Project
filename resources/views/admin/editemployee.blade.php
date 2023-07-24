@@ -14,11 +14,12 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ url('/updateemployeedata') }}" method="post">
+                            <form action="{{ url('/updateemployeedata') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <div class="row">
-                                        <input type="hidden" class="form-control" name="empId" value="{{ $empdata['id'] }}">
+                                        <input type="hidden" class="form-control" name="empId"
+                                            value="{{ $empdata['id'] }}">
                                         <div class="col-md-4">
                                             <label for="username" class="control-label mb-1">Enter Name</label>
                                             <input id="username" name="username" type="text" class="form-control"
@@ -103,12 +104,27 @@
                                             <label for="category_name" class="control-label mb-1">Select City</label>
                                             <select id="city" name="city" class="form-control">
                                                 <option selected disabled>Select City</option>
-                                                <option value="surat" {{$empdata['city'] == "surat" ? 'selected' : ''}}>Surat</option>
-                                                <option value="ahmedabad"  {{$empdata['city'] == "ahmedabad" ? 'selected' : ''}} >Ahmedabad</option>
-                                                <option value="vadodara"  {{$empdata['city'] == "vadodara" ? 'selected' : ''}} >Vadodara</option>
-                                                <option value="bharuch"  {{$empdata['city'] == "bharuch" ? 'selected' : ''}} >Bharuch</option>
-                                                <option value="vapi"  {{$empdata['city'] == "vapi" ? 'selected' : ''}} >Vapi</option>
+                                                <option value="surat"
+                                                    {{ $empdata['city'] == 'surat' ? 'selected' : '' }}>Surat</option>
+                                                <option value="ahmedabad"
+                                                    {{ $empdata['city'] == 'ahmedabad' ? 'selected' : '' }}>Ahmedabad
+                                                </option>
+                                                <option value="vadodara"
+                                                    {{ $empdata['city'] == 'vadodara' ? 'selected' : '' }}>Vadodara
+                                                </option>
+                                                <option value="bharuch"
+                                                    {{ $empdata['city'] == 'bharuch' ? 'selected' : '' }}>Bharuch</option>
+                                                <option value="vapi" {{ $empdata['city'] == 'vapi' ? 'selected' : '' }}>
+                                                    Vapi</option>
                                             </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="username" class="control-label my-2">Image</label> <br>
+                                            <input id="image" name="image" type="file" class="form-control"
+                                                aria-required="true" aria-invalid="false" value="{{$empdata['Image']}}">
+                                            <img src="{{ asset('storage/Media/' . $empdata['Image']) }}"
+                                                class="img-fluid mt-3" alt="" height="200px"
+                                                width="200px">
                                         </div>
                                     </div>
                                 </div>

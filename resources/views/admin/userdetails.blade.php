@@ -29,10 +29,9 @@
                             <th>Gender</th>
                             <th>Skill</th>
                             <th>City</th>
-                            <th>Created At</th>
-                            <th>Update At</th>
+                            <th>Image</th>
                             @can('isAdmin')
-                            <th>Action</th>
+                                <th class="text-center">Action</th>
                             @endcan
                         </tr>
                     </thead>
@@ -46,16 +45,20 @@
                                 <td>{{ $data['gender'] }}</td>
                                 <td>{{ $data['skill'] }}</td>
                                 <td>{{ $data['city'] }}</td>
-                                <td>{{ $data['created_at'] }}</td>
-                                <td>{{ $data['updated_at'] }}</td>
-                                @can('isAdmin')
                                 <td>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <a href="{{url('/viewpersonaldetail/'.$data['id'])}}"><button class="btn btn-secondary">View</button></a>
-                                        <a href="{{ url('/editemployee/'.$data['id']) }}"><button class="btn btn-info mx-3">Edit</button></a>
-                                       <a href="{{url('/delete/'.$data['id'])}}"><button class="btn btn-danger">Delete</button></a> 
-                                    </div>
+                                    <img src="{{ asset('storage/Media/' . $data['Image']) }}" alt="">
                                 </td>
+                                @can('isAdmin')
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <a href="{{ url('/viewpersonaldetail/' . $data['id']) }}"><button
+                                                    class="btn btn-secondary">View</button></a>
+                                            <a href="{{ url('/editemployee/' . $data['id']) }}"><button
+                                                    class="btn btn-info mx-3">Edit</button></a>
+                                            <a href="{{ url('/delete/' . $data['id']) }}"><button
+                                                    class="btn btn-danger">Delete</button></a>
+                                        </div>
+                                    </td>
                                 @endcan
                             </tr>
                         @endforeach

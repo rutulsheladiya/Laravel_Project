@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ url('/sendmanageuserdetail') }}" method="post">
+                            <form action="{{ url('/sendmanageuserdetail') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <div class="row">
@@ -100,6 +100,13 @@
                                                 <option value="bharuch">Bharuch</option>
                                                 <option value="vapi">Vapi</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label for="image" class="control-label mb-1"> Image</label>
+                                            <input id="image" name="image" type="file" class="form-control"
+                                                aria-required="true" aria-invalid="false">
                                         </div>
                                     </div>
                                 </div>
