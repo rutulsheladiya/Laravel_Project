@@ -56,12 +56,12 @@
                             <div class="form-group">
                                 <label for="username" class="control-label mb-1">Created At</label>
                                 <input id="username" name="username" type="text" class="form-control"
-                                    aria-required="true" aria-invalid="false" value="{{ $personaldata['created_at'] }}" readonly>
+                                    aria-required="true" aria-invalid="false" value="{{ changeFormate($personaldata['created_at'],'d-M-Y h:i:s A')}}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="username" class="control-label mb-1">Updated At</label>
                                 <input id="username" name="username" type="text" class="form-control"
-                                    aria-required="true" aria-invalid="false" value="{{ $personaldata['updated_at'] }}" readonly>
+                                    aria-required="true" aria-invalid="false" value="{{changeFormate( $personaldata['updated_at'] ,'d-M-Y h:i:s A')}}" readonly>
                             </div>
                         </div>
                     </div>
